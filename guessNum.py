@@ -12,7 +12,8 @@ def print_footer(the_number, tries):
     print("\n\nPress the enter key to exit.")    
     
 def main():
-    # print the greeting banner
+
+ print the greeting banner
     print_header()
     
     # set the initial values
