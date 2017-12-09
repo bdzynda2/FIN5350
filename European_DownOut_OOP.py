@@ -117,11 +117,11 @@ class Euro_Down_Out_Barrier(object):
             self.sum_CT = self.sum_CT + CT
             self.sum_CT2 = self.sum_CT2 + CT*CT
                         
-        self.call_value = self.sum_CT/ self.simulations * np.exp(-self.rate * self.expiry)
+        self.value = self.sum_CT/ self.simulations * np.exp(-self.rate * self.expiry)
         self.SD = np.sqrt((self.sum_CT2 - self.sum_CT * self.sum_CT / self.simulations) * np.exp(-2 * self.rate * self.expiry) / (self.simulations - 1))
         self.SE = self.SD / np.sqrt(self.simulations)
         
-        return(self.call_value, self.SE)
+        return(self.value, self.SE)
         
         
         
