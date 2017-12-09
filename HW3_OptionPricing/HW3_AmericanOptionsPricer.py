@@ -9,8 +9,8 @@ class VanillaOption(object):
         self.strike = strike
         self.expiry = expiry
 
-    def payoff(self, spot):
-        pass
+    #def payoff(self, spot):
+       # pass
 
 class VanillaCallOption(VanillaOption):
     """A concrete class for vanilla call options"""
