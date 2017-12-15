@@ -78,6 +78,7 @@ def WienerBridge(expiry, num_steps, endval):
 class Euro_Down_Out_Barrier(object):
     
     def __init__(self, option, data, barrier, steps = 8, simulations = 1000):
+        
         self.barrier = barrier
         self.steps = steps
         self.simulations = simulations
@@ -89,15 +90,56 @@ class Euro_Down_Out_Barrier(object):
         self.nu = (data.rate - data.div - 0.5)
         self.sigsdt = (data.vol * np.sqrt(self.dt))
         self.rate = data.rate
-        self.St = np.zeros(self.steps)
-        self.St[0] = self.spot 
-    
-        self.sum_CT = 0
-        self.sum_CT2 = 0
         
         
+        
+    def RegularMC(self):
+        
+        regular_time1 = time.time()
+        
+        sum_CT = 0
+        sum_CT2 = 0
+        
+        St = np.zeros(self.steps)
+        St[0] = self.spot
+        
+        for i in range(self.simulations):
+            
+            epsilon = np.random.normal(0,1)
+            
+            z = WienerBridge(self.expiry, self.steps, epsilon)
+            
+            for j in range(1,(self.steps)):
+                St[j] = St[j-1] * np.exp(self.nudt + self.sigsdt * z[j])
+                if(St[j] < self.barrier):
+                    St[j] = 0
+                    
+            Price = St[-1]        
+                    
+            CT = np.maximum(0, Price - self.strike)
+            sum_CT = sum_CT + CT
+            sum_CT2 = sum_CT2 + CT*CT
+                        
+        self.r_value = sum_CT/ self.simulations * np.exp(-self.rate * self.expiry)
+        SD = np.sqrt((sum_CT2 - sum_CT * sum_CT / self.simulations) * np.exp(-2 * self.rate * self.expiry) / (self.simulations - 1))
+        self.r_SE = SD / np.sqrt(self.simulations)
+        
+        regular_time2 = time.time()
+        self.r_time = regular_time2 - regular_time1
+        return(self.r_value, self.r_SE, self.r_time)
+            
+            
+
         
     def StratifiedMC(self):
+        
+        strat_time1 = time.time()
+        
+        sum_CT = 0
+        sum_CT2 = 0
+        
+        St = np.zeros(self.steps)
+        St[0] = self.spot
         
         for i in range(self.simulations):
             
@@ -107,40 +149,142 @@ class Euro_Down_Out_Barrier(object):
             z = WienerBridge(self.expiry, self.steps, epsilon)
             
             for j in range(1,(self.steps)):
-                self.St[j] = self.St[j-1] * np.exp(self.nudt + self.sigsdt * z[j])
-                if(self.St[j] < self.barrier):
-                    self.St[j] = 0
+                St[j] = St[j-1] * np.exp(self.nudt + self.sigsdt * z[j])
+                if(St[j] < self.barrier):
+                    St[j] = 0
                     
-            Price = self.St[-1]        
+            Price = St[-1]        
                     
             CT = np.maximum(0, Price - self.strike)
-            self.sum_CT = self.sum_CT + CT
-            self.sum_CT2 = self.sum_CT2 + CT*CT
+            sum_CT = sum_CT + CT
+            sum_CT2 = sum_CT2 + CT*CT
                         
-        self.value = self.sum_CT/ self.simulations * np.exp(-self.rate * self.expiry)
-        self.SD = np.sqrt((self.sum_CT2 - self.sum_CT * self.sum_CT / self.simulations) * np.exp(-2 * self.rate * self.expiry) / (self.simulations - 1))
-        self.SE = self.SD / np.sqrt(self.simulations)
+        self.s_value = sum_CT/ self.simulations * np.exp(-self.rate * self.expiry)
+        SD = np.sqrt((sum_CT2 - sum_CT * sum_CT / self.simulations) * np.exp(-2 * self.rate * self.expiry) / (self.simulations - 1))
+        self.s_SE = SD / np.sqrt(self.simulations)
         
-        return(self.value, self.SE)
+        strat_time2 = time.time()
+        self.s_time = strat_time2 - strat_time1
+        return(self.s_value, self.s_SE, self.s_time)
         
+    def AntitheticMC(self):
+        
+        ant_time1 = time.time()
+        
+        simulations = self.simulations // 2
+        
+        sum_CT = 0
+        sum_CT2 = 0
+        
+        St = np.zeros(self.steps)
+        St[0] = self.spot
+        
+        for i in range(simulations):
+            
+            ep1 = np.random.normal(0,1)
+            ep2 = -ep1
+            
+            z1 = WienerBridge(self.expiry, self.steps, ep1)
+            z2 = WienerBridge(self.expiry, self.steps, ep2)
+            
+            z = np.hstack((z1, z2))
+            
+            for j in range(1,(self.steps)):
+                St[j] = St[j-1] * np.exp(self.nudt + self.sigsdt * z[j])
+                if(St[j] < self.barrier):
+                    St[j] = 0
+                    
+            Price = St[-1]        
+                    
+            CT = np.maximum(0, Price - self.strike)
+            sum_CT = sum_CT + CT
+            sum_CT2 = sum_CT2 + CT*CT
+                        
+        self.a_value = sum_CT/ simulations * np.exp(-self.rate * self.expiry)
+        SD = np.sqrt((sum_CT2 - sum_CT * sum_CT / simulations) * np.exp(-2 * self.rate * self.expiry) / (simulations - 1))
+        self.a_SE = SD / np.sqrt(simulations)
+        
+        ant_time2 = time.time()
+        self.a_time = ant_time2 - ant_time1
+        return(self.a_value, self.a_SE, self.a_time)
+        
+    
+    def BadAssMC(self):
+        """
+        Uses Antithetic and Stratified Sampling
+        """
+        
+        ba_time1 = time.time()
+        
+        simulations = self.simulations // 2
+        
+        sum_CT = 0
+        sum_CT2 = 0
+        
+        St = np.zeros(self.steps)
+        St[0] = self.spot
+        
+        for i in range(simulations):
+            
+            u1 = np.random.uniform(0,1)
+            u2 = 1 - u1
+            
+            ep1 = norm.ppf(u1)
+            ep2 = norm.ppf(u2)
+            
+            z1 = WienerBridge(self.expiry, self.steps, ep1)
+            z2 = WienerBridge(self.expiry, self.steps, ep2)
+            
+            z = np.hstack((z1, z2))
+            
+            for j in range(1,(self.steps)):
+                St[j] = St[j-1] * np.exp(self.nudt + self.sigsdt * z[j])
+                if(St[j] < self.barrier):
+                    St[j] = 0
+                    
+            Price = St[-1]        
+                    
+            CT = np.maximum(0, Price - self.strike)
+            sum_CT = sum_CT + CT
+            sum_CT2 = sum_CT2 + CT*CT
+                        
+        self.ba_value = sum_CT/ simulations * np.exp(-self.rate * self.expiry)
+        SD = np.sqrt((sum_CT2 - sum_CT * sum_CT / simulations) * np.exp(-2 * self.rate * self.expiry) / (simulations - 1))
+        self.ba_SE = SD / np.sqrt(simulations)
+        
+        ba_time2 = time.time()
+        self.ba_time = ba_time2 - ba_time1
+        return(self.ba_value, self.ba_SE, self.ba_time)
+        
+
         
         
 call = CallOption(100, 1)
 
 data = MarketData(100, 0.06, 0.2, 0.03) 
                     
-priceIt = Euro_Down_Out_Barrier(call, data, barrier = 99, steps = 256, simulations = 100000)                  
+priceIt = Euro_Down_Out_Barrier(call, data, barrier = 99, steps = 8, simulations = 100)                  
                     
-t1 = time.time()  
-                  
+ 
+priceIt.RegularMC()  
+print("\nThe Price using regular MC is: $", priceIt.r_value)         
+print("The stardard error is: $", priceIt.r_SE)   
+print("Time: ", priceIt.r_time)
+              
 priceIt.StratifiedMC()   
-                 
-t2 = time.time()  
-print("The Price is: $", priceIt.value)         
-print("The stardard error is: $", priceIt.SE)         
-print("Time: ", t2 - t1)                    
-                    
-                    
+print("\nThe Price using Stratified Sampling is: $", priceIt.s_value)         
+print("The stardard error is: $", priceIt.s_SE)   
+print("Time: ", priceIt.s_time)        
+
+priceIt.AntitheticMC()   
+print("\nThe Price using Antithetic Sampling is: $", priceIt.a_value)         
+print("The stardard error is: $", priceIt.a_SE)   
+print("Time: ", priceIt.a_time)        
+
+priceIt.BadAssMC()   
+print("\nThe Price using Antithetic Sampling is: $", priceIt.ba_value)         
+print("The stardard error is: $", priceIt.ba_SE)   
+print("Time: ", priceIt.ba_time)       
                     
                     
                     
