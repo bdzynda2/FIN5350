@@ -1,8 +1,10 @@
+Further Thoughts on The Two Cultures
+David Zynda
 
 
- Beauty characterized in mathematical expressions should render nothing short of sheer wonder given the nature of the discipline. Largely constructed in the realms of often-thought Platonic wonder, the correspondence of theoretical math to the natural world evokes more than a fortuitous and incidental instantiation, but rather seems to approach near truth itself. However, the deductive and formal evaluation of one formula via proof to another, no matter the elegance, still falls short of a perfect material match to the outside world. Long dictated but yet seemingly poorly understood is the fact that, “all models are wrong, but some are useful"[^1]. No matter the beauty and creativity expressed step by step through a proof, the marriage of the theoretical domain to that of the physical world remains a daunting task to fully unite. There is no doubt, however, that the enormous success characterized by the mathematization of the world over the last few hundred years has brought far more successes than downfalls. 
+Beauty characterized in mathematical expressions should render nothing short of sheer wonder given the nature of the discipline. Largely constructed in the realms of often-thought Platonic wonder, the correspondence of theoretical math to the natural world evokes more than a fortuitous and incidental instantiation, but rather seems to approach near truth itself. However, the deductive and formal evaluation of one formula via proof to another, no matter the elegance, still falls short of a perfect material match to the outside world. Long dictated but yet seemingly poorly understood is the fact that, “all models are wrong, but some are useful"[^1]. No matter the beauty and creativity expressed step by step through a proof, the marriage of the theoretical domain to that of the physical world remains a daunting task to fully unite. There is no doubt, however, that the enormous success characterized by the mathematization of the world over the last few hundred years has brought far more successes than downfalls. 
 	
- Isolated, controlled experiments, such as those found in agriculture and biology, no doubt prove useful to the traditional paradigm. Moreover, it may even be the case that useful is to weak of a word to use. Indeed, it seems as the perfect match: the mathematical partitioning through designs of experiments harbor great insight and power to understand an underlying phenomenon of interest. Yet, the situations where such controls and measures can be executed seem rather limited, all else considered. Concerning economics, James Buchanan writes, “A market is not competitive by assumption or construction. A market becomes competitive, and competitive rules come to be established as institutions emerge to place limits on individual behavior patterns”[^2]. In such case where it may not be always prudent to assume a certain set of assumptions, the question arises as to how one can best witness this “becoming” that Buchanan speaks of, be it in economics, atmospheric science, or a whole host of others. 
+Isolated, controlled experiments, such as those found in agriculture and biology, no doubt prove useful to the traditional paradigm. Moreover, it may even be the case that useful is to weak of a word to use. Indeed, it seems as the perfect match: the mathematical partitioning through designs of experiments harbor great insight and power to understand an underlying phenomenon of interest. Yet, the situations where such controls and measures can be executed seem rather limited, all else considered. Concerning economics, James Buchanan writes, “A market is not competitive by assumption or construction. A market becomes competitive, and competitive rules come to be established as institutions emerge to place limits on individual behavior patterns”[^2]. In such case where it may not be always prudent to assume a certain set of assumptions, the question arises as to how one can best witness this “becoming” that Buchanan speaks of, be it in economics, atmospheric science, or a whole host of others. 
 	
  Could the limit be approaching in recognizing the limits of purely theoretical methods and models subject to rigid proofs and constraints? Given the rise of advanced computational power, should limiting oneself to a set of prescribed assumptions be the norm instead of the exception? Certainly, there is a place and time for all methods. Yet, the rise of simulation in place of mathematically elegant optimization should be a force to be reckoned with, especially in the domain of modern statistics and economics. 
  
@@ -36,23 +38,23 @@ All in all, Breiman’s perception of statistical analysis[^17] appears to be a 
   If the discipline of not just statistics, but more so economics is willing to abide by these guidelines, the field can only be enriched much more. This does not mean to abandon the traditional paradigm, but to be open to that which in fact gives the best solution. A one out of 20 shot for identifying an insignificant results as significant fall so short then saying "given new data, this model predicts with 95% accuracy". If the goal is to understand more honestly a phenomena of interest all the while tackling new and interesting problems, methods nearly a century old may not be always appropriate. Thought this excercise is largely preachinig to the choir, a little change would not hurt. 
 
 
-[^1] Box, G.E.P. (1976), "Science and Statistics", _Journal of the American Statistical Association_, 71: 791–799.
-[^2] Buchanan, James M., "What Should Economists Do" _Southern Economic Journal_, Vol. 30, No. 3 (Jan., 1964), pp 218. 
-[^3] From a lecture in February 2017 delivered by Breiman's colleague Dr. Adele Cutler at Utah State University. 
-[^4] Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 199.
-[^5] _Ibid._, 208.
-[^6] _Ibid._, 199.
-[^7] _Ibid._, 202.
-[^8] _Ibid._
-[^9] Wooldridge, Jeffrey M., 1960-. Introductory Econometrics : a Modern Approach. Mason, Ohio: South-Western Cengage Learning, 2012.
-[^10] Hilton, Nicholas S., "The Determinants of Minimum Wage Ordinances: An Analysis of the 100 Largest Cities from 2012-2017". This is my partner's Plan A Master's Thesis which has been successfully defended and to be published in USU Digital Commons in the comming months. 
-[^11] Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 208.
-[^12] Reiss, Julian, "A Plea for (Good) Simulations: Nudging Economics Toward an Experimental Science", _Simulation & Gaming_ Vol 42, No. 2, pp. 249.
-[^13] _Ibid_. 
-[^14] _Ibid._, 254
-[^15] Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 199.
-[^16] F. A. Hayek. The American Economic Review, Volume 35, Issue 4 (Sep., 1945), 519–530.
-[^17] Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 201.
+[^1]: Box, G.E.P. (1976), "Science and Statistics", _Journal of the American Statistical Association_, 71: 791–799.
+[^2]: Buchanan, James M., "What Should Economists Do" _Southern Economic Journal_, Vol. 30, No. 3 (Jan., 1964), pp 218. 
+[^3]: From a lecture in February 2017 delivered by Breiman's colleague Dr. Adele Cutler at Utah State University. 
+[^4]: Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 199.
+[^5]: _Ibid._, 208.
+[^6]: _Ibid._, 199.
+[^7]: _Ibid._, 202.
+[^8]: _Ibid._
+[^9]: Wooldridge, Jeffrey M., 1960-. Introductory Econometrics : a Modern Approach. Mason, Ohio: South-Western Cengage Learning, 2012.
+[^10]: Hilton, Nicholas S., "The Determinants of Minimum Wage Ordinances: An Analysis of the 100 Largest Cities from 2012-2017". This is my partner's Plan A Master's Thesis which has been successfully defended and to be published in USU Digital Commons in the comming months. 
+[^11]: Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 208.
+[^12]: Reiss, Julian, "A Plea for (Good) Simulations: Nudging Economics Toward an Experimental Science", _Simulation & Gaming_ Vol 42, No. 2, pp. 249.
+[^13]: _Ibid_. 
+[^14]: _Ibid._, 254
+[^15]: Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 199.
+[^16]: F. A. Hayek. The American Economic Review, Volume 35, Issue 4 (Sep., 1945), 519–530.
+[^17]: Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 201.
 
 
 
