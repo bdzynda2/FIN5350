@@ -30,10 +30,10 @@ Furthermore, Buchanan’s problem with the optimization of economics may be bett
 All in all, Breiman’s perception of statistical analysis<sup>17</sup> appears to be a sound insight to both statistics and economics duly considered:
 
 >  1) Focus on finding a good solution - that’s what consultants get paid for
-  2) Live with the data before you plunge into modeling
-  3) Search for a model that gives a good solution either algorithmic or data
-  4) Predictive accuracy on test sets is the criterion for how good the model is
-  5) Computers are an indispensable partner
+>  2) Live with the data before you plunge into modeling
+>  3) Search for a model that gives a good solution either algorithmic or data
+>  4) Predictive accuracy on test sets is the criterion for how good the model is
+>  5) Computers are an indispensable partner
 
 If the discipline of not just statistics, but more so economics is willing to abide by these guidelines, the field can only be enriched much more. This does not mean to abandon the traditional paradigm, but to be open to that which in fact gives the best solution. A 1 out of 20 shot for identifying an insignificant result as significant falls short compared with saying "given new data, this model predicts with 95% accuracy". If the goal is to understand more honestly a phenomena of interest all the while tackling new and interesting problems, methods nearly a century old may not be always appropriate. 
 
