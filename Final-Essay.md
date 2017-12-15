@@ -39,21 +39,37 @@ All in all, Breiman’s perception of statistical analysis[^17] appears to be a 
 
 
 [^1]: Box, G.E.P. (1976), "Science and Statistics", _Journal of the American Statistical Association_, 71: 791–799.
+
 [^2]: Buchanan, James M., "What Should Economists Do" _Southern Economic Journal_, Vol. 30, No. 3 (Jan., 1964), pp 218. 
+
 [^3]: From a lecture in February 2017 delivered by Breiman's colleague Dr. Adele Cutler at Utah State University. 
+
 [^4]: Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 199.
+
 [^5]: _Ibid._, 208.
+
 [^6]: _Ibid._, 199.
+
 [^7]: _Ibid._, 202.
+
 [^8]: _Ibid._
+
 [^9]: Wooldridge, Jeffrey M., 1960-. Introductory Econometrics : a Modern Approach. Mason, Ohio: South-Western Cengage Learning, 2012.
+
 [^10]: Hilton, Nicholas S., "The Determinants of Minimum Wage Ordinances: An Analysis of the 100 Largest Cities from 2012-2017". This is my partner's Plan A Master's Thesis which has been successfully defended and to be published in USU Digital Commons in the comming months. 
+
 [^11]: Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 208.
+
 [^12]: Reiss, Julian, "A Plea for (Good) Simulations: Nudging Economics Toward an Experimental Science", _Simulation & Gaming_ Vol 42, No. 2, pp. 249.
+
 [^13]: _Ibid_. 
+
 [^14]: _Ibid._, 254
+
 [^15]: Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 199.
+
 [^16]: F. A. Hayek. The American Economic Review, Volume 35, Issue 4 (Sep., 1945), 519–530.
+
 [^17]: Breiman, Leo, "Statistcal Modeling: The Two Cultures" _Statistical Science_ Vol. 16, No. 3, 2001, pp. 201.
 
 
