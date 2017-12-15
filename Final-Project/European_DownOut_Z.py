@@ -4,24 +4,6 @@ European Down and Out
 
 Number of steps must be power of 2 (8,16,32, 256, etc)
 
-generate Strata epsilon,
-put in weiner 
-calculate path forward
-while checking for barrier cross
-
-for each rep in j get a path
-within time loop build out stock price
-
-for j in range (M)
-  get weiner bridge - path[k] = path[k-1] x np.exp(nudt + sgdt *)
-  steps
-  for k in range (n)
-    get price path
-    check for barrier crossing
-  
-  ct[j] = callPayoff(price path[-1], k) #average and discsount this
-  
-Co = ct.mean() * exp(-r*T)
 
 """
 

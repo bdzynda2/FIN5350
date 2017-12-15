@@ -125,14 +125,20 @@ class Euro_Down_Out_Barrier(object):
         
         
         
-    
+call = CallOption(100, 1)
+
+data = MarketData(100, 0.06, 0.2, 0.03) 
                     
+priceIt = Euro_Down_Out_Barrier(call, data, barrier = 99, steps = 256, simulations = 100000)                  
                     
-                    
-                    
-                    
-                    
-                    
+t1 = time.time()  
+                  
+priceIt.StratifiedMC()   
+                 
+t2 = time.time()  
+print("The Price is: $", priceIt.value)         
+print("The stardard error is: $", priceIt.SE)         
+print("Time: ", t2 - t1)                    
                     
                     
                     
