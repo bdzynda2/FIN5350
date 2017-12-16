@@ -10,34 +10,34 @@ import random
 from scipy.stats import norm
 from math import log2
 
-class Option(object):
+cdef class Option(object):
     """An abstract interface for plain vanilla options"""
 
-    def __init__(self, strike, expiry):
+    cdef def __init__(self, double strike, int expiry):
         self.strike = strike
         self.expiry = expiry
 
-    def payoff(self, spot):
+    cdef double def payoff(self, double spot):
         pass
 
-class CallOption(Option):
+cdef class CallOption(Option):
     """A concrete class for vanilla call options"""
 
-    def payoff(self, spot):
+    cdef double def payoff(self, double spot):
         return np.maximum(spot - self.strike, 0.0)
 
     
-class PutOption(Option):
+cdef class PutOption(Option):
     """A concrete class for vanilla put options"""
 
-    def payoff(self, spot):
+    cdef double def payoff(self, double spot):
         return np.maximum(self.strike - spot, 0.0)
 
 
-class MarketData(object):
+cdef class MarketData(object):
     """A Class for setting values of spot price, risk free rate, volatility, and dividends"""
     
-    def __init__(self, spot, rate, vol, div):
+    def __init__(self, double spot, double rate, double vol, double div):
         self.spot = spot
         self.rate = rate
         self.vol = vol
@@ -76,7 +76,7 @@ def WienerBridge(expiry, num_steps, endval):
     return np.diff(w)  ## Recall the the Brownian motion is the first difference of the Wiener process
 
     
-class Euro_Down_Out_Barrier(object):
+cdef class Euro_Down_Out_Barrier(object):
     
     """
     A Class used to price a European Down and Out Barrier Option using the following functions representing simulation methods:
@@ -98,7 +98,7 @@ class Euro_Down_Out_Barrier(object):
     
     """
     
-    def __init__(self, option, data, barrier, steps = 8, simulations = 1000):
+    cdef def __init__(self, Option option, MarketData data, double barrier, int steps = 8, int simulations = 1000):
         
         self.barrier = barrier
         self.steps = steps
