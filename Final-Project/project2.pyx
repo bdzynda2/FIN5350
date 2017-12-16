@@ -297,7 +297,7 @@ call = CallOption(100, 1)
 
 data = MarketData(100, 0.06, 0.2, 0.03) 
                     
-priceIt = Euro_Down_Out_Barrier(call, data, barrier = 99, steps = 8, simulations = 100)                  
+priceIt = Euro_Down_Out_Barrier(call, data, barrier = 99, steps = 256, simulations = 100000)                  
                     
  
 priceIt.RegularMC()  
