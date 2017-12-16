@@ -84,9 +84,17 @@ class Euro_Down_Out_Barrier(object):
         3) AntitheticMC() - Antithetical Sampling
         4) BadAssMC() - Combination of Stratified and Antithetic Sampling
     
+    
     Option = object of class "Option"
     
-    data = 
+    data = object of class "MarketData"
+    
+    barrier = price barrier
+    
+    steps = number discrete processes in Wiener Bridge
+    
+    simulations = monte carlo simulation steps
+    
     """
     
     def __init__(self, option, data, barrier, steps = 8, simulations = 1000):
@@ -102,6 +110,7 @@ class Euro_Down_Out_Barrier(object):
         self.nu = (data.rate - data.div - 0.5)
         self.sigsdt = (data.vol * np.sqrt(self.dt))
         self.rate = data.rate
+        
         
         
         
@@ -179,6 +188,9 @@ class Euro_Down_Out_Barrier(object):
         self.s_time = strat_time2 - strat_time1
         return(self.s_value, self.s_SE, self.s_time)
         
+        
+        
+        
     def AntitheticMC(self):
         
         a_time1 = time.time()
@@ -225,9 +237,12 @@ class Euro_Down_Out_Barrier(object):
         return(self.a_value, self.a_SE, self.a_time)
         
     
+    
+    
+    
     def BadAssMC(self):
         """
-        Uses Antithetic and Stratified Sampling
+        Uses Antithetic and Stratified Sampling combined
         """
         
         ba_time1 = time.time()
@@ -285,22 +300,22 @@ priceIt = Euro_Down_Out_Barrier(call, data, barrier = 99, steps = 8, simulations
  
 priceIt.RegularMC()  
 print("\nThe Price using regular MC is: $", priceIt.r_value)         
-print("The stardard error is: $", priceIt.r_SE)   
+print("The standard error is: $", priceIt.r_SE)   
 print("Time: ", priceIt.r_time)
               
 priceIt.StratifiedMC()   
 print("\nThe Price using Stratified Sampling is: $", priceIt.s_value)         
-print("The stardard error is: $", priceIt.s_SE)   
+print("The standard error is: $", priceIt.s_SE)   
 print("Time: ", priceIt.s_time)        
 
 priceIt.AntitheticMC()   
 print("\nThe Price using Antithetic Sampling is: $", priceIt.a_value)         
-print("The stardard error is: $", priceIt.a_SE)   
+print("The standard error is: $", priceIt.a_SE)   
 print("Time: ", priceIt.a_time)        
 
 priceIt.BadAssMC()   
 print("\nThe Price using Combined Antithetic and Stratified Sampling is: $", priceIt.ba_value)         
-print("The stardard error is: $", priceIt.ba_SE)   
+print("The standard error is: $", priceIt.ba_SE)   
 print("Time: ", priceIt.ba_time)       
                     
                     
