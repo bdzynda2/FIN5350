@@ -35,6 +35,7 @@ class PutOption(Option):
 
 
 class MarketData(object):
+    """A Class for setting values of spot price, risk free rate, volatility, and dividends"""
     
     def __init__(self, spot, rate, vol, div):
         self.spot = spot
@@ -115,6 +116,7 @@ class Euro_Down_Out_Barrier(object):
         
         
     def RegularMC(self):
+        """Function that does simple monte carlo simulation using draws from random normal"""
         
         regular_time1 = time.time()
         
@@ -153,6 +155,7 @@ class Euro_Down_Out_Barrier(object):
 
         
     def StratifiedMC(self):
+        """function that runs monte carlo simulation using stratified sampling"""
         
         strat_time1 = time.time()
         
@@ -192,6 +195,7 @@ class Euro_Down_Out_Barrier(object):
         
         
     def AntitheticMC(self):
+        """Function that uses antithetic sampling to perform monte carlo simulation"""
         
         a_time1 = time.time()
         
@@ -241,9 +245,7 @@ class Euro_Down_Out_Barrier(object):
     
     
     def BadAssMC(self):
-        """
-        Uses Antithetic and Stratified Sampling combined
-        """
+        """Uses Antithetic and Stratified Sampling combined for monte carlo simulations"""
         
         ba_time1 = time.time()
                
